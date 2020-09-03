@@ -1,10 +1,17 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import { add } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
+addIcons({
+  'ios-add': add,
+  'md-add': add,
+});
 @Component({
   components: {},
   name: 'hello-world',
 })
 class HelloWorldView extends Vue {
+  @Prop({ type: String, default: ''}) private msg!: string;
   // --------------------------------------------------------------------------
   // [Private] Fields
   // --------------------------------------------------------------------------
@@ -39,6 +46,7 @@ class HelloWorldView extends Vue {
 
   private mounted() {
     // TODO: stuff to do when this component loads.
+    console.log(add)
   }
 }
 

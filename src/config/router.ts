@@ -1,11 +1,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import { IonicVueRouter } from '@ionic/vue';
 const rdRoutes = require('../../.rdvue/routes.js');
 const routeList = rdRoutes.default;
 
-Vue.use(Router);
+Vue.use(IonicVueRouter);
 
-export default new Router({
+export default new IonicVueRouter({
   mode: 'hash',
   base: process.env.BASE_URL,
   routes: [
@@ -25,14 +26,16 @@ export default new Router({
       // needed for a page into it's own JS file. This greatly speeds-up
       // the load time of individual page. The 'webpackChunkName' comment
       // below *SHOULD* have a unique name from other routes.
-      component: () =>
-        import(
-          /* webpackChunkName: "hello-world" */
-          '@/pages/hello-world'),
+      component: () => import( /* webpackChunkName: "hello-world" */ '@/pages/hello-world'),
     },
     // ------------------------------------------------------------------------
     // TODO: Add your own pages
     // ------------------------------------------------------------------------
 
+    {
+      path: '/new-item',
+      name: 'new-item',
+      component: () => import(/* webpackChunkName: "new-item" */ '@/pages/new-item-page'),
+    },
   ],
 });
